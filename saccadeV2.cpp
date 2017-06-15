@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -29,14 +28,14 @@ int main( int argc, char *argv[ ] )
     SystemManager sysMgr;
     sysMgr.running = true;
     int lastrender = 0;
-    if( SDL_Init( SDL_INIT_JOYSTICK | SDL_INIT_VIDEO ) == -1 )
+    if( SDL_Init( SDL_INIT_JOYSTICK | SDL_INIT_VIDEO) == -1 )
     {
         printf( "Can't init SDL:  %s\n", SDL_GetError( ) );
         return EXIT_FAILURE;
     }
 
     atexit( SDL_Quit );
-    screen = SDL_SetVideoMode( 640, 480, 16, SDL_HWSURFACE );
+    screen = SDL_SetVideoMode( 720, 480, 16, SDL_HWSURFACE | SDL_FULLSCREEN );
 
     if( !screen)
     {
@@ -46,7 +45,7 @@ int main( int argc, char *argv[ ] )
 
     SDL_Rect position;
     SDL_Surface *rectangle = NULL;
-    rectangle = SDL_CreateRGBSurface(SDL_HWSURFACE, 12, 12, 16, 1, 0, 0, 0);
+    rectangle = SDL_CreateRGBSurface(SDL_HWSURFACE, 20, 20, 16, 0, 1, 0, 0);
 
     position.x = screen->w/2;
     position.y = screen->h/2;
@@ -74,5 +73,4 @@ int main( int argc, char *argv[ ] )
   return EXIT_SUCCESS;
 
 }
-
 
